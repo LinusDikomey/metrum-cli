@@ -245,7 +245,7 @@ pub fn year_day(year: i32, month: chrono::Month, day: u8) -> u16 {
     year_day
 }
 
-fn days_in_month(month: chrono::Month, year: i32) -> u8 {
+pub fn days_in_month(month: chrono::Month, year: i32) -> u8 {
     use chrono::Month::*;
     match month {
         January | March | May | July | August | October | December => 31,
@@ -261,7 +261,11 @@ fn days_in_month(month: chrono::Month, year: i32) -> u8 {
     }
 }
 
-fn is_leap_year(year: i32) -> bool {
+pub fn days_in_year(year: i32) -> u16 {
+    if is_leap_year(year) { 366 } else { 365 }
+}
+
+pub fn is_leap_year(year: i32) -> bool {
     if year % 4 == 0 {
         if year % 100 == 0 {
             year % 400 == 0

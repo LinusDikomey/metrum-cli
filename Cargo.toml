@@ -1,5 +1,5 @@
 [package]
-name = "t2"
+name = "metrum"
 version = "0.1.0"
 edition = "2018"
 
@@ -8,4 +8,5 @@ edition = "2018"
 [dependencies]
 chrono = "0.4.19"
 num-traits = "0.2.14"
-colorful = "0.2.1"
+tui = "0.15.0"
+termion = "1.5"
