@@ -1,8 +1,7 @@
 use std::io;
 
-use tui::{Frame, Terminal, backend::{Backend, TermionBackend}, layout::{Constraint, Direction, Layout}, style::{Color, Style}, text::{Span, Spans}, widgets::{Gauge, Paragraph, Wrap}};
+use tui::{Frame, Terminal, backend::{Backend, CrosstermBackend}, layout::{Constraint, Direction, Layout}, style::{Color, Style}, text::{Span, Spans}, widgets::{Gauge, Paragraph, Wrap}};
 use tui::widgets::{Block, Borders};
-use termion::raw::{IntoRawMode, RawTerminal};
 
 use crate::time::{self, MetrumDateTime};
 
@@ -18,9 +17,9 @@ struct Settings {
     tick_style: Style
 }
 
-impl Cli<TermionBackend<RawTerminal<io::Stdout>>> {
+impl Cli<CrosstermBackend<io::Stdout>> {
     pub fn new() -> Self {
-        let terminal = Terminal::new(TermionBackend::new(io::stdout().into_raw_mode().unwrap())).unwrap();
+        let terminal = Terminal::new(CrosstermBackend::new(io::stdout())).unwrap();
         Cli { 
             terminal,
             settings: Settings {
